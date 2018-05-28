@@ -24,7 +24,7 @@ $(document).ready(() => {
 function getBooks(page, author) {
     onSearch();
 
-    $.get( "http://openlibrary.org/search.json",
+    $.get( "https://openlibrary.org/search.json",
     {
         format: 'json',
         author: author,
@@ -43,7 +43,7 @@ function getBooks(page, author) {
                     title: book.title,
                     languages: book.language,
                     published: book.publish_year ? book.publish_year.sort() : [],
-                    cover: "http://covers.openlibrary.org/b/olid/"+book.cover_edition_key+"-L.jpg"
+                    cover: "https://covers.openlibrary.org/b/olid/"+book.cover_edition_key+"-L.jpg"
                 }
                 addBookElement(bookObj);
             }
