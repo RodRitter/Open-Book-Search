@@ -2,9 +2,7 @@ window.readyToLoad = true;
 window.lastPageLoaded = 0;
 window.maxPage = 99;
 window.bookElements = {};
-window.bookTitles = [] // used for filtering
 window.isFiltered = false;
-
 
 $(document).ready(() => {
     getBooks(1, 'tolkien');
@@ -16,8 +14,12 @@ $(document).ready(() => {
             }
         }
     });
-});
 
+    $('.search-input').on('input', function() {
+        var query = $('.search-input').val();
+        filterBooks(query.toLowerCase())
+    });
+});
 
 function getBooks(page, author) {
     onSearch();
@@ -37,6 +39,7 @@ function getBooks(page, author) {
             var book = json.docs[i];
             if(book.cover_edition_key) {
                 var bookObj = {
+                    id: book.cover_edition_key,
                     title: book.title,
                     languages: book.language,
                     published: book.publish_year ? book.publish_year.sort() : [],
@@ -45,6 +48,12 @@ function getBooks(page, author) {
                 addBookElement(bookObj);
             }
         }
+
+        var filterQuery = $('.search-input').val();
+        if(filterQuery !== '') {
+            filterBooks(filterQuery);
+        }
+
         onSearchComplete(json);
     });
 }
@@ -74,14 +83,16 @@ function addBookElement(book) {
 
     bookEl.append(cover, title, published, languages);
 
-    window.bookElements[book.title] = bookEl;
-    window.bookTitles.push(book.title);
+    window.bookElements[book.id] = bookEl;
+    window.bookElements[book.id].title = book.title.toLowerCase();
     $('.book-list').append(bookEl);
 }
 
 function filterBooks(query) {
-    window.isFiltered
-    var filtered = window.bookTitles.filter(title => title.indexOf(query) < 0);
+    window.resetFilter();
+    window.isFiltered = true;
+    
+    var filtered = Object.keys(window.bookElements).filter(el => window.bookElements[el].title.indexOf(query) < 0);
 
     filtered.forEach((title) => {
         window.bookElements[title].addClass('hidden');
@@ -89,7 +100,8 @@ function filterBooks(query) {
 }
 
 function resetFilter() {
-    window.bookTitles.forEach((title) => {
-        window.bookElements[title].removeClass('hidden');
+    window.isFiltered = false;
+    Object.keys(window.bookElements).forEach((bookID) => {
+        window.bookElements[bookID].removeClass('hidden');
     })
 }
