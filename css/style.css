@@ -1,0 +1,55 @@
+.hidden {
+    display: none;
+}
+
+.loader {
+    border: 6px solid #f3f3f3;
+    border-top: 6px solid #3498db;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    animation: spin 1s linear infinite;
+    margin: 50px auto 150px auto;
+}
+
+.book {
+    width: 21%;
+    margin: 2%;
+}
+
+.book-cover {
+    width: 100%;
+}
+
+.cover-wrapper {
+    min-height: 250px;
+    background: #f3f3f3;
+}
+
+.search-section {
+    padding: 100px 0;
+}
+
+.search-input {
+    width: 450px;
+    padding: 15px;
+    font-size: 18px;
+    margin: 0 auto;
+    display: block;
+    border-radius: 50px;
+    border: 1px solid gray;
+    text-align: center;
+}
+
+.search-input:focus {
+    outline: none;
+}
+
+.book-title {
+    margin-top: 20px;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
