@@ -66,10 +66,6 @@
     cursor: pointer;
 }
 
-#filter-btn:active {
-
-}
-
 #filter-btn:focus {
     outline: none;
 }
