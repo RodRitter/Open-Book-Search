@@ -28,10 +28,16 @@
     <a name="top"></a>
 
     <section class="search-section">
-        <input class="search-input" type="text" placeholder="Filter books by Title">
+            <h1 class="search-heading">Tolkien Book Search</h1>
+            <h3 class="search-subheading">Published Date Filter</h3>
+            <input class="search-input-year-start" value="1800" type="number" placeholder="Start Year">
+            <input class="search-input-year-end" value="2018" type="number" placeholder="End Year">
+            <button id="filter-btn">Filter</button>
     </section>
 
-    <div class="book-list d-flex flex-wrap"></div>
+    <div class="container">
+        <div class="book-list d-flex flex-wrap"></div>
+    </div>
 
     <div class="loader hidden"></div>
     

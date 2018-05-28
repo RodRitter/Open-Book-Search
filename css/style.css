@@ -22,7 +22,6 @@
 }
 
 .cover-wrapper {
-    min-height: 250px;
     background: #f3f3f3;
 }
 
@@ -30,15 +29,49 @@
     padding: 100px 0;
 }
 
-.search-input {
+.search-heading,
+.search-subheading {
+    text-align: center;
+}
+
+.search-subheading {
+    margin-top: 40px;
+}
+
+.search-input-year-start,
+.search-input-year-end {
     width: 450px;
-    padding: 15px;
+    padding: 10px;
     font-size: 18px;
-    margin: 0 auto;
+    margin: 10px auto;
     display: block;
     border-radius: 50px;
     border: 1px solid gray;
     text-align: center;
+}
+
+.search-input-year-start:focus,
+.search-input-year-end:focus {
+    outline: none;
+}
+
+#filter-btn {
+    display: block;
+    width: 450px;
+    padding: 10px;
+    margin: 15px auto;
+    border-radius: 50px;
+    background: #f3f2f7;
+    border: 1px solid #cdccd0;
+    cursor: pointer;
+}
+
+#filter-btn:active {
+
+}
+
+#filter-btn:focus {
+    outline: none;
 }
 
 .search-input:focus {
